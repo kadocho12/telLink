@@ -15,7 +15,8 @@
 //   };
 // }
 
-const tel_ptn = /0\d{2,3}-\d{1,4}-\d{4}/g;
+
+const tel_ptn = /0\d{1,3}-\d{1,4}-\d{3,4}|0\d{1,3}\(\d{1,4}\)\d{3,4}|\(0\d{1,3}\)\d{1,4}-\d{3,4}/g;
 
 // 文字列をNodeListに変換する関数
 function convertHtml(text) {
@@ -50,6 +51,8 @@ while (node = nodeIterator.nextNode()) {
     const replaceHTML = node.textContent.replace(tel_ptn, function (match) {
       return '<a href="tel:' + match.replace(/[()-]/g, "") + '">' + match + '</a>';
     });
+
+    console.log(replaceHTML);
 
     // 置き換えるべきDOMオブジェクト
     const replaceNodeLists = convertHtml(replaceHTML);
