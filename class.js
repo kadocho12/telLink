@@ -1,3 +1,16 @@
+var userAgent = window.navigator.userAgent.toLowerCase();
+const mediaQuery = window.matchMedia('(max-width: 1024px)');
+
+if (userAgent.indexOf('iphone') > -1 ||
+    userAgent.indexOf('android') > -1 ||
+    userAgent.indexOf('ipad') > -1 || userAgent.indexOf('macintosh') > -1 && 'ontouchend' in document ||
+    mediaQuery.matches) {
+  alert('タブレットやで');
+} else {
+  // PC
+  alert('PCやで');
+}
+
 const tel_pattern = /\d{3}-\d{4}-\d{4}/;
 
 const nodeIterator = document.createNodeIterator(
@@ -12,6 +25,7 @@ const nodeIterator = document.createNodeIterator(
 
 let node;
 while (node = nodeIterator.nextNode()) {
+  console.log(node);
   node.parentNode.classList.add('telNumberParent');
 }
 
