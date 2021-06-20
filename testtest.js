@@ -1,4 +1,4 @@
-const tel_pattern = /\d{3}-\d{4}-\d{4}/;
+// const tel_pattern = /\d{3}-\d{4}-\d{4}/;
 
 const nodeIterator = document.createNodeIterator(
   document.body,
@@ -24,17 +24,17 @@ while (node = nodeIterator.nextNode()) {
     
     let el = node.parentNode;
     let oldNode = node;
-    let newNode = document.createElement('span');
+    let newNode = document.createElement('a');
     // node.textContent = node.textContent.replace(/\d{3}-\d{4}-\d{4}/g, function (match) {
     //   return '<a href="tel:' + match.replace(/-/g, "") + '">' + match + '</a>';
     // });
-    pikapika = node.textContent.replace(/\d{3}-\d{4}-\d{4}/g, function (match) {
+    let hoge = node.textContent.replace(/\d{3}-\d{4}-\d{4}/g, function (match) {
       return '<a href="tel:' + match.replace(/-/g, "") + '">' + match + '</a>';
     });
 
-    // console.log(pikapika);
-    let newNodeContent = document.createTextNode(node.textContent);
-    el.appendChild(newNodeContent);
+    console.log(hoge);
+    let newNodeContent = document.createTextNode(hoge);
+    newNode.appendChild(newNodeContent);
 
     el.replaceChild(newNode, oldNode);
   }
